@@ -35,7 +35,9 @@ const InteractionDataProvider: React.FC<{
 		}
 	}, [mousePosition, touchPosition]);
 
-	const cursorIsPressed = useMouseClicked() || useTouchClicked();
+	const mouseIsPressed = useMouseClicked();
+	const touchIsPressed = useTouchClicked();
+	const cursorIsPressed = mouseIsPressed || touchIsPressed;
 
 	return (
 		<InteractionData.Provider
