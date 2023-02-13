@@ -105,29 +105,3 @@ export default App;
 	cursorIsPressed: boolean;
 }
 ```
-
-### 待開發...
-
-#### useOnTouched
-
-當滑鼠或手指碰到該遊戲物件的瞬間執行指定 function
-
-#### useWhenTouched
-
-當滑鼠或手指碰到該遊戲物件時，執行指定 function，每 animationFrame 執行一次
-
-### useLeaveTouched
-
-當滑鼠或手指離開該遊戲物件的瞬間執行指定 function
-
-### useOnColideWith
-
-當與某遊戲物件碰撞的瞬間執行指定 function
-
-### useWhenColideWith
-
-當與某遊戲物件碰撞的每個 animationFrame 執行指定 function
-
-### useLeaveColideWith
-
-當與某遊戲物件碰撞結束的瞬間執行某個指定 function
