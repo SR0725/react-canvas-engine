@@ -16,14 +16,14 @@ import {
 } from '../dist/react-canvas-engine';
 import { loadImage } from '../src/utils/loadImage';
 function App() {
-  return (
+	return (
 		<div id='app'>
-			<CanvasEngine
+			<Game
 				width={500}
 				height={500}
 			>
 				<Cat />
-			</CanvasEngine>
+			</Game>
 		</div>
 	);
 }
@@ -37,21 +37,17 @@ function Cat() {
 	const [rotate, setRotate] = React.useState(0);
 	const [image, setImage] = React.useState(loadImage('/cat.png'));
 
-	useOnUpdated(() => {
-		setX(x + 1);
-	});
-
-	return (
-		<GameObject
-			x={x}
-			y={y}
-			width={width}
-			height={height}
-			flipped={flipped}
-			rotate={rotate}
-			image={image}
-		/>
-	);
+  return (
+    <GameObject
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      flipped={flipped}
+      rotate={rotate}
+      image={image}
+    />
+  );
 }
 
 export default App;
