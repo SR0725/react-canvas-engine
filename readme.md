@@ -1,3 +1,5 @@
+[![version](https://img.shields.io/npm/v/react-canvas-engine)](https://www.npmjs.com/package/react-canvas-engine?activeTab=readme)
+
 <h1>reat-canvas-engine</h1>
 
 ## 功能
@@ -18,12 +20,12 @@ import { loadImage } from '../src/utils/loadImage';
 function App() {
 	return (
 		<div id='app'>
-			<Game
+			<CanvasEngine
 				width={500}
 				height={500}
 			>
 				<Cat />
-			</Game>
+			</CanvasEngine>
 		</div>
 	);
 }
@@ -37,17 +39,21 @@ function Cat() {
 	const [rotate, setRotate] = React.useState(0);
 	const [image, setImage] = React.useState(loadImage('/cat.png'));
 
-  return (
-    <GameObject
-      x={x}
-      y={y}
-      width={width}
-      height={height}
-      flipped={flipped}
-      rotate={rotate}
-      image={image}
-    />
-  );
+	useOnUpdated(() => {
+		setX(x + 1);
+	});
+
+	return (
+		<GameObject
+			x={x}
+			y={y}
+			width={width}
+			height={height}
+			flipped={flipped}
+			rotate={rotate}
+			image={image}
+		/>
+	);
 }
 
 export default App;
