@@ -17,7 +17,6 @@ const useOnUpdated = (callback: () => void) => {
 		});
 
 		return () => {
-      console.log(tasks.length)
 			tasks.splice(
 				tasks.findIndex((task) => task.id === id.current),
 				1
