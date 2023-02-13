@@ -14,38 +14,38 @@ import GameObject from '../src/components/GameObject';
 import { GameObject as GameObjectType } from '../src/types/GameObject';
 import { loadImage } from '../src/utils/loadImage';
 function App() {
-	return (
-		<div id='app'>
-			<Game
-				width={500}
-				height={500}
-			>
-				<Cat />
-			</Game>
-		</div>
-	);
+  return (
+    <div id='app'>
+      <Game
+        width={500}
+        height={500}
+      >
+        <Cat />
+      </Game>
+    </div>
+  );
 }
 
 function Cat() {
-	const [x, setX] = React.useState(64);
-	const [y, setY] = React.useState(64);
-	const [width, setWidth] = React.useState(50);
-	const [height, setHeight] = React.useState(50);
-	const [flipped, setFlipped] = React.useState(false);
-	const [rotate, setRotate] = React.useState(0);
-	const [image, setImage] = React.useState(loadImage('/cat.png'));
+  const [x, setX] = React.useState(64);
+  const [y, setY] = React.useState(64);
+  const [width, setWidth] = React.useState(50);
+  const [height, setHeight] = React.useState(50);
+  const [flipped, setFlipped] = React.useState(false);
+  const [rotate, setRotate] = React.useState(0);
+  const [image, setImage] = React.useState(loadImage('/cat.png'));
 
-	return (
-		<GameObject
-			x={x}
-			y={y}
-			width={width}
-			height={height}
-			flipped={flipped}
-			rotate={rotate}
-			image={image}
-		/>
-	);
+  return (
+    <GameObject
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      flipped={flipped}
+      rotate={rotate}
+      image={image}
+    />
+  );
 }
 
 export default App;
