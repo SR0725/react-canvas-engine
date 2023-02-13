@@ -1,9 +1,9 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 const useMouseClicked = () => {
-	const [isClicked, setIsClicked] = React.useState<boolean>(false);
+	const [isClicked, setIsClicked] = useState<boolean>(false);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const handleClicked = () => {
 			setIsClicked(true);
 		};

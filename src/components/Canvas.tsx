@@ -1,5 +1,5 @@
-import React from 'react';
-import * as ReactNil from 'react-nil';
+import { CanvasHTMLAttributes, FC, useRef } from 'react';
+import { NilNode, render } from 'react-nil';
 import useOnMounted from '@/hooks/useOnMounted';
 import useOnUpdated, { loop } from '@/hooks/useOnUpdated';
 import { GameObject as GameObjectType } from '@/types/GameObject';
@@ -55,7 +55,7 @@ function renderCanvas(ctx: CanvasRenderingContext2D, list: GameObjectType[]) {
 
 // Get all game objects from the node tree
 function getGameObjects(
-	node: ReactNil.NilNode<Record<string, unknown>> | null
+	node: NilNode<Record<string, unknown>> | null
 ): GameObjectType[] {
 	const gameObjects: GameObjectType[] = [];
 
@@ -76,17 +76,14 @@ function getGameObjects(
 	return gameObjects;
 }
 
-interface CanvasType extends React.CanvasHTMLAttributes<HTMLCanvasElement> {
+interface CanvasType extends CanvasHTMLAttributes<HTMLCanvasElement> {
 	children?: React.ReactNode;
 }
-const Canvas: React.FC<Readonly<CanvasType>> = ({
-	children,
-	...canvasProps
-}) => {
-	const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
-	const container = ReactNil.render(children);
+const Canvas: FC<Readonly<CanvasType>> = ({ children, ...canvasProps }) => {
+	const canvasRef = useRef<HTMLCanvasElement | null>(null);
+	const container = render(children);
 
-  useOnMounted(() => {
+	useOnMounted(() => {
 		const ctx = canvasRef.current?.getContext('2d');
 
 		if (ctx) {
@@ -108,7 +105,7 @@ const Canvas: React.FC<Readonly<CanvasType>> = ({
 
 	useOnUpdated(() => {
 		const ctx = canvasRef.current?.getContext('2d');
-    let gameObjectList = getGameObjects(container.head);
+		let gameObjectList = getGameObjects(container.head);
 
 		if (ctx) {
 			clearCanvas(ctx);

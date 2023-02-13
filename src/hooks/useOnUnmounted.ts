@@ -1,11 +1,11 @@
-import React from 'react';
+import { useEffect } from 'react';
 
 const useOnUnmounted = (callback: () => void) => {
-  React.useEffect(() => {
-    return () => {
-      callback();
-    };
-  }, []);
+	useEffect(() => {
+		return () => {
+			callback();
+		};
+	}, []);
 };
 
 export default useOnUnmounted;

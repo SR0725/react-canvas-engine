@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 type TouchPosition = {
 	x: number;
@@ -6,12 +6,12 @@ type TouchPosition = {
 };
 
 const useTouchPosition = () => {
-	const [touchPosition, setTouchPosition] = React.useState<TouchPosition>({
+	const [touchPosition, setTouchPosition] = useState<TouchPosition>({
 		x: NaN,
 		y: NaN,
 	});
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const updateTouchPosition = (event: TouchEvent) => {
 			const touch = event.touches[0];
 			setTouchPosition({

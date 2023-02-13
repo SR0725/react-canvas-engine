@@ -1,4 +1,4 @@
-import React from 'react';
+import { FC } from 'react';
 import { GameObject as GameObjectType } from '@/types/GameObject';
 
 declare global {
@@ -8,7 +8,7 @@ declare global {
 		}
 	}
 }
-const GameObject: React.FC<Readonly<GameObjectType>> = (objectState) => {
+const GameObject: FC<Readonly<GameObjectType>> = (objectState) => {
 	return <gameObject {...objectState}></gameObject>;
 };
 

@@ -1,7 +1,7 @@
-import React from 'react';
+import { useEffect } from 'react';
 
 const useOnMounted = (callback: () => void) => {
-	React.useEffect(() => {
+	useEffect(() => {
 		callback();
 	}, []);
 };

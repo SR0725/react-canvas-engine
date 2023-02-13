@@ -1,18 +1,15 @@
 import * as React from 'react';
-import Game from '../src/index';
-import GameObject from '../src/components/GameObject';
-import useOnUpdated from '../src/hooks/useOnUpdated';
-import { GameObject as GameObjectType } from '../src/types/GameObject';
+import { CanvasEngine, GameObject, useOnUpdated } from '../dist/react-canvas-engine';
 import { loadImage } from '../src/utils/loadImage';
 function App() {
 	return (
 		<div id='app'>
-			<Game
+			<CanvasEngine
 				width={500}
 				height={500}
 			>
 				<Cat />
-			</Game>
+			</CanvasEngine>
 		</div>
 	);
 }
@@ -25,7 +22,6 @@ function Cat() {
 	const [flipped, setFlipped] = React.useState(false);
 	const [rotate, setRotate] = React.useState(0);
 	const [image, setImage] = React.useState(loadImage('/cat.png'));
-  
 
 	useOnUpdated(() => {
 		setX(x + 1);

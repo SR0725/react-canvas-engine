@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 
 type MousePosition = {
 	x: number;
@@ -6,12 +6,12 @@ type MousePosition = {
 };
 
 const useMousePosition = () => {
-	const [mousePosition, setMousePosition] = React.useState<MousePosition>({
+	const [mousePosition, setMousePosition] = useState<MousePosition>({
 		x: NaN,
 		y: NaN,
 	});
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const updateMousePosition = (event: MouseEvent) => {
 			setMousePosition({ x: event.clientX, y: event.clientY });
 		};

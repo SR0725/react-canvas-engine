@@ -1,4 +1,11 @@
-import React from 'react';
+import {
+	createContext,
+	useState,
+	FC,
+	useEffect,
+	useContext,
+	ReactNode,
+} from 'react';
 import useMousePosition from '@/hooks/useMousePosition';
 import useTouchPosition from '@/hooks/useTouchPosition';
 import useMouseClicked from '@/hooks/useMouseClicked';
@@ -12,7 +19,7 @@ interface InteractionDataType {
 	cursorIsPressed: boolean;
 }
 
-const InteractionData = React.createContext<InteractionDataType>({
+const InteractionData = createContext<InteractionDataType>({
 	cursorPosition: {
 		x: 0,
 		y: 0,
@@ -20,14 +27,14 @@ const InteractionData = React.createContext<InteractionDataType>({
 	cursorIsPressed: false,
 });
 
-const InteractionDataProvider: React.FC<{
-	readonly children: React.ReactNode;
+const InteractionDataProvider: FC<{
+	readonly children: ReactNode;
 }> = ({ children }) => {
 	const mousePosition = useMousePosition();
 	const touchPosition = useTouchPosition();
-	const [cursorPosition, setCursorPosition] = React.useState({ x: 0, y: 0 });
+	const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if ('ontouchstart' in window) {
 			setCursorPosition(touchPosition);
 		} else {
@@ -51,6 +58,6 @@ const InteractionDataProvider: React.FC<{
 	);
 };
 
-const useInteractionData = () => React.useContext(InteractionData);
+const useInteractionData = () => useContext(InteractionData);
 
 export { InteractionDataProvider, useInteractionData };

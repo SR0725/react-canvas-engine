@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useEffect } from 'react';
 import useOnUnmounted from './useOnUnmounted';
 
 // 用來存放所有callback的陣列
@@ -8,9 +8,9 @@ const tasks: {
 }[] = [];
 
 const useOnUpdated = (callback: () => void) => {
-	const id = React.useRef(Math.random().toString(36).substr(2, 9));
+	const id = useRef(Math.random().toString(36).substr(2, 9));
 
-	React.useEffect(() => {
+	useEffect(() => {
 		tasks.push({
 			id: id.current,
 			callback,
@@ -23,12 +23,10 @@ const useOnUpdated = (callback: () => void) => {
 			);
 		};
 	}, [callback]);
-
 };
 
 // 執行所有callback
 export const runCallbacks = () => {
-
 	tasks.forEach((task) => task.callback());
 };
 
