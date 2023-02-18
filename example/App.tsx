@@ -8,8 +8,7 @@ import {
 	useInteractionData,
 	isCollide,
 	getDistance,
-} from '../src/index';
-// '../dist/react-canvas-engine';
+} from '../dist/react-canvas-engine.mjs';
 
 function App() {
 	return (
@@ -24,11 +23,11 @@ function App() {
 			<CanvasEngine
 				width={window.innerWidth}
 				height={window.innerHeight}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-        }}
+				style={{
+					position: 'fixed',
+					top: 0,
+					left: 0,
+				}}
 			>
 				<Cat />
 			</CanvasEngine>
