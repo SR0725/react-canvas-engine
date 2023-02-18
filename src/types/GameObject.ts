@@ -6,5 +6,6 @@ export interface GameObject {
 	height: number;
 	flipped?: boolean;
 	rotate?: number;
-	image?: HTMLImageElement;
+  imageElement?: HTMLImageElement;
+	imageSrc?: string;
 }

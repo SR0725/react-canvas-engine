@@ -5,6 +5,7 @@ import {
 	useEffect,
 	useContext,
 	ReactNode,
+	useMemo,
 } from 'react';
 import useMousePosition from '@/hooks/useMousePosition';
 import useTouchPosition from '@/hooks/useTouchPosition';
@@ -22,7 +23,7 @@ interface InteractionDataType {
 const InteractionData = createContext<InteractionDataType>({
 	cursorPosition: {
 		x: 0,
-		y: 0,
+		y: 50,
 	},
 	cursorIsPressed: false,
 });
@@ -46,13 +47,16 @@ const InteractionDataProvider: FC<{
 	const touchIsPressed = useTouchClicked();
 	const cursorIsPressed = mouseIsPressed || touchIsPressed;
 
+	const interactionData = useMemo(
+		() => ({
+			cursorPosition,
+			cursorIsPressed,
+		}),
+		[cursorPosition, cursorIsPressed]
+	);
+
 	return (
-		<InteractionData.Provider
-			value={{
-				cursorPosition,
-				cursorIsPressed,
-			}}
-		>
+		<InteractionData.Provider value={interactionData}>
 			{children}
 		</InteractionData.Provider>
 	);

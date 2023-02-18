@@ -30,11 +30,12 @@ function renderCanvas(ctx: CanvasRenderingContext2D, list: GameObjectType[]) {
 	clearCanvas(ctx);
 
 	list.forEach((gameObject) => {
-		const { x, y, width, height, flipped, rotate, image } = gameObject;
+		const { x, y, width, height, flipped, rotate, imageElement } =
+			gameObject;
 
 		ctx.save();
 
-		if (!image) return;
+		if (!imageElement) return;
 
 		if (flipped) {
 			ctx.translate(x + width, y);
@@ -47,7 +48,7 @@ function renderCanvas(ctx: CanvasRenderingContext2D, list: GameObjectType[]) {
 			ctx.rotate(rotate);
 		}
 
-		ctx.drawImage(image, 0, 0, width, height);
+		ctx.drawImage(imageElement, 0, 0, width, height);
 
 		ctx.restore();
 	});

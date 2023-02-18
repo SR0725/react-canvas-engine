@@ -1,8 +1,16 @@
 /**
  * Loads an image from a given path
  */
+const imageCache: { [key: string]: HTMLImageElement } = {};
+
 export const loadImage = (src: string) => {
-	const image = new Image();
-	image.src = src;
-	return image;
+	if (imageCache[src]) {
+		return imageCache[src];
+	}
+
+	const imageElement = new Image();
+	imageElement.src = src;
+	imageCache[src] = imageElement;
+
+	return imageElement;
 };

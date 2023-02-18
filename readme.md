@@ -1,6 +1,6 @@
 [![version](https://img.shields.io/npm/v/react-canvas-engine)](https://www.npmjs.com/package/react-canvas-engine?activeTab=readme)
 
-<h1>reat-canvas-engine</h1>
+<h1>react-canvas-engine</h1>
 
 ## 功能
 
@@ -37,7 +37,7 @@ function Cat() {
 	const [height, setHeight] = React.useState(50);
 	const [flipped, setFlipped] = React.useState(false);
 	const [rotate, setRotate] = React.useState(0);
-	const [image, setImage] = React.useState(loadImage('/cat.png'));
+	const [imageSrc, setimageSrc] = React.useState('/cat.png');
 
 	useOnUpdated(() => {
 		setX(x + 1);
@@ -51,7 +51,7 @@ function Cat() {
 			height={height}
 			flipped={flipped}
 			rotate={rotate}
-			image={image}
+			imageSrc={image}
 		/>
 	);
 }
@@ -61,13 +61,13 @@ export default App;
 
 ## Component
 
-#### Game
+#### CanvasEngine
 
 -   @input CanvasHTMLAttributes
 -   @return HTMLCanvasElement
 
-所有的遊戲物件都應該在 Game 以內，Game 裡頭也只能放 GameObject，正常的 UI 放在裡頭是不會被顯示的<br>
-一個專案是允許有多個 Game，你可以透過不同的 Game 來滿足不同的顯示需求
+所有的遊戲物件都應該在 CanvasEngine 以內，CanvasEngine 裡頭也只能放 GameObject，正常的 UI 放在裡頭是不會被顯示的<br>
+一個專案是允許有多個 CanvasEngine，你可以透過不同的 CanvasEngine 來滿足不同的顯示需求
 
 #### GameObject
 
@@ -77,7 +77,7 @@ export default App;
 -   @input height [number] 圖片高度
 -   @input ?flipped [boolean] 圖像是否左右翻轉
 -   @input ?rotate [number] 顯示角度，2\*Math.pi() 為 360 度
--   @input ?image [typeof Image()] 顯示的圖片 // todo: 未來會進一步整合，只需要傳入圖片的位置即可
+-   @input ?imageSrc [string] 顯示的圖片位置
 
 ## Hook
 
