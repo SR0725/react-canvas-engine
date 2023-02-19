@@ -1,6 +1,6 @@
 {
   "name": "react-canvas-engine",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "一個用於React的Canvas引擎，可以用來製作遊戲、動畫、繪圖等等",
   "license": "MIT",
   "author": "ray0725 <t110820046@ntut.org.tw> ()",
